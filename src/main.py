@@ -13,3 +13,9 @@ debugpy.listen(("0.0.0.0", 5678))
 @app.get("/")
 def read_root():
     return {"Cześć": "oto ja !!"}
+
+
+@app.get("/hits")
+def read_root2():
+    r.incr("hits")
+    return {"Number of hits": r.get("hits")}
